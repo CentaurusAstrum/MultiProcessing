@@ -7,6 +7,7 @@ start = 1
 end = 1_000_000
 x = 1000
 
+#Define functions
 def summation(x, q):
     sum = 0
     for i in range(start, end+1):
@@ -32,6 +33,7 @@ def log_series(x, N):
 
 def main():
 
+    #generate a queue to collect results
     q = Queue()
 
     start1 = time.time()
@@ -63,7 +65,6 @@ def main():
         results.append(pool.apply_async(exp_series, (x, 100,)))
         results.append(pool.apply_async(log_series, (x, 100,)))
 
-        # Ergebnisse sammeln und ausdrucken
         print('Summation:', results[0].get(), '\n')
         print('Square Root:', results[1].get(), '\n')
         print('Exponential Series:', results[2].get(), '\n')
